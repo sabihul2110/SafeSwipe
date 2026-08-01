@@ -1,0 +1,5 @@
+# SafeSwipe/backend/requirements.txt
+
+
+fastapi
+uvicorn

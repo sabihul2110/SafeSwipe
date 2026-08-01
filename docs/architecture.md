@@ -9,8 +9,8 @@ This file is the single source of truth for how SafeSwipe is designed. It will b
 Initialized — no architectural decisions made yet.
 
 ## Table of Contents (to be filled in as we go)
-- [ ] System Overview
-- [ ] High-Level Components
+- [x] System Overview
+- [x] High-Level Components
 - [ ] Data Flow
 - [x] Tech Stack Decisions
 - [ ] Deployment Strategy
@@ -43,6 +43,18 @@ Live transaction --> FastAPI --> ML model predicts --> result + transaction stor
                                 v
                         React frontend displays result
 ```
+
+
+## System Overview
+SafeSwipe is split into three independent parts that talk to each other, not one big tangled app:
+- **backend/** — the API layer. Everything else goes through this.
+- **frontend/** — what the user actually sees and interacts with.
+- **ml/** — trains the model that the backend uses to make predictions.
+
+## High-Level Components
+- **FastAPI backend** — receives transaction data, asks the ML model for a prediction, stores the result, sends it back.
+- **React frontend** — sends transactions (real or simulated) to the backend, displays results.
+- **ML pipeline** — offline process; trains a model on the Kaggle dataset, produces a model file the backend can load.
 
 
 ## Repository Structure

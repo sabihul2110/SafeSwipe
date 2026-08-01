@@ -1,0 +1,6 @@
+# SafeSwipe/ml/requirements.txt
+
+
+pandas
+scikit-learn
+jupyter
