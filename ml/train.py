@@ -1,7 +1,11 @@
 # SafeSwipe/ml/train.py
 
 # Placeholder for the training pipeline.
-# Real logic (loading the Kaggle dataset, training a model) comes in a later step.
+# Expected flow once implemented:
+#   1. Load dataset from ml/data/
+#   2. Preprocess / split train-test
+#   3. Train model
+#   4. Save trained model to ml/model/
 
 def main():
     print("SafeSwipe ML pipeline placeholder — not implemented yet.")

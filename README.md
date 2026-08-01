@@ -13,7 +13,7 @@ All architecture decisions, setup guides, and specifications live in the [`docs/
 
 ## Getting Started
 
-Setup instructions will be added here once the initial project scaffolding is complete. See `docs/setup.md` for progress.
+See [`docs/setup.md`](./docs/setup.md) for full setup instructions for the backend, frontend, and ML pipeline.
 
 ## License
 

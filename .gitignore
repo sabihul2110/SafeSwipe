@@ -30,3 +30,9 @@ frontend/build/
 # Backend virtual environment (per-folder, in case it differs from root)
 backend/venv/
 ml/venv/
+
+# ML data and trained models — too large/binary for Git
+ml/data/*
+!ml/data/.gitkeep
+ml/model/*
+!ml/model/.gitkeep

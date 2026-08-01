@@ -11,7 +11,7 @@ Initialized — no architectural decisions made yet.
 ## Table of Contents (to be filled in as we go)
 - [x] System Overview
 - [x] High-Level Components
-- [ ] Data Flow
+- [x] Data Flow
 - [x] Tech Stack Decisions
 - [ ] Deployment Strategy
 
@@ -71,6 +71,10 @@ SafeSwipe/
 ```
 
 Each of these folders (`backend/`, `frontend/`, `ml/`) will get its own README once real work starts inside it, explaining what's there and how to run it.
+
+
+## Deployment Strategy
+Not decided yet. To be filled in once the app is functional end-to-end locally. Will cover hosting for backend, frontend, and how the trained model gets deployed alongside the API.
 
 
 ## Change Log
