@@ -1,0 +1,23 @@
+<!-- SafeSwipe/.gitignore -->
+
+# Private / internal notes — not meant for the public repo
+docs/private/
+
+# OS junk
+.DS_Store
+
+# Node
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Environment variables / secrets
+.env
+.env.local
+
+# Editor
+.vscode/
