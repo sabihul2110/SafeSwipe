@@ -5,7 +5,15 @@
 This is the FastAPI backend for SafeSwipe. It exposes the API that the frontend talks to, and will eventually serve the ML model's predictions.
 
 ## Status
-Scaffolding only — no endpoints written yet.
+Basic structure in place: a health-check endpoint, config module, and router pattern for future endpoints.
+
+## Structure
+```text
+backend/
+├── main.py           # App entry point — wires everything together
+├── core/             # App-wide config/settings
+└── routers/          # API endpoints, grouped by feature
+```
 
 ## Stack
 - Python 3

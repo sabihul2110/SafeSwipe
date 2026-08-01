@@ -62,6 +62,8 @@ SafeSwipe is split into three independent parts that talk to each other, not one
 ```text
 SafeSwipe/
 ├── backend/        # FastAPI app — API and eventually the ML model serving
+│   ├── core/        # App-wide config/settings
+│   └── routers/     # API endpoints, grouped by feature
 ├── frontend/        # React app
 ├── ml/              # Data pipeline, training scripts, Kaggle dataset handling
 ├── docs/            # All documentation (this folder)
@@ -76,3 +78,4 @@ Each of these folders (`backend/`, `frontend/`, `ml/`) will get its own README o
 |---|---|---|
 | _(01/08/2026)_ | Initial document created | Mohammad Sabihul Haque |
 | _(01/08/2026)_ | Locked in tech stack: FastAPI, React, Python/Kaggle for ML, SQLite→Postgres | Mohammad Sabihul Haque |
+| _(02/08/2026)_ | Restructured backend with core/ and routers/, added health-check endpoint | Mohammad Sabihul Haque |
