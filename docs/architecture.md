@@ -44,6 +44,21 @@ Live transaction --> FastAPI --> ML model predicts --> result + transaction stor
                         React frontend displays result
 ```
 
+
+## Repository Structure
+
+```text
+SafeSwipe/
+├── backend/        # FastAPI app — API and eventually the ML model serving
+├── frontend/        # React app
+├── ml/              # Data pipeline, training scripts, Kaggle dataset handling
+├── docs/            # All documentation (this folder)
+└── docs/private/    # Git-ignored, local-only notes
+```
+
+Each of these folders (`backend/`, `frontend/`, `ml/`) will get its own README once real work starts inside it, explaining what's there and how to run it.
+
+
 ## Change Log
 | Date | Change | Author |
 |---|---|---|
