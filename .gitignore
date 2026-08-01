@@ -36,3 +36,6 @@ ml/data/*
 !ml/data/.gitkeep
 ml/model/*
 !ml/model/.gitkeep
+
+# Local SQLite database file
+backend/*.db

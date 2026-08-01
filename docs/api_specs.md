@@ -35,7 +35,9 @@ Accepts a transaction and returns a fraud verdict.
 }
 ```
 
-**Note:** The fraud check is currently a placeholder rule (flags amounts over 50000), not a real ML model. This will be replaced once Umar's pipeline produces a trained model.
+**Note:** The fraud check is currently a placeholder rule (flags amounts over 50000), not a real ML model. This will be replaced once the ML pipeline produces a trained model.
+
+Every checked transaction is now saved to the database (SQLite for now), including the amount, merchant, verdict, reason, and timestamp.
 
 ## Conventions
 - All new endpoints go in `backend/routers/`, grouped by feature (e.g. `transactions.py`, `predictions.py`).

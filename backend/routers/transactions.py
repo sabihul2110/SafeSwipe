@@ -1,22 +1,32 @@
 # SafeSwipe/backend/routers/transactions.py
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from sqlalchemy.orm import Session
 
 from schemas import TransactionRequest, TransactionResponse
+from core.database import get_db
+from models import TransactionRecord
 
 router = APIRouter()
 
 
 @router.post("/transactions/check", response_model=TransactionResponse)
-def check_transaction(transaction: TransactionRequest):
+def check_transaction(transaction: TransactionRequest, db: Session = Depends(get_db)):
     # Placeholder logic only — real ML model will replace this.
-    # For now: flag anything over 50000 as suspicious, just to prove the flow works.
     if transaction.amount > 50000:
-        return TransactionResponse(
-            is_fraud=True,
-            reason="Amount unusually high (placeholder rule, not real ML)",
-        )
-    return TransactionResponse(
-        is_fraud=False,
-        reason="No issues detected (placeholder rule, not real ML)",
+        is_fraud = True
+        reason = "Amount unusually high (placeholder rule, not real ML)"
+    else:
+        is_fraud = False
+        reason = "No issues detected (placeholder rule, not real ML)"
+
+    record = TransactionRecord(
+        amount=transaction.amount,
+        merchant=transaction.merchant,
+        is_fraud=is_fraud,
+        reason=reason,
     )
+    db.add(record)
+    db.commit()
+
+    return TransactionResponse(is_fraud=is_fraud, reason=reason)
