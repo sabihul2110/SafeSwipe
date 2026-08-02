@@ -69,6 +69,11 @@ SafeSwipe/
 │   ├── models/          # SQLAlchemy table definitions
 │   └── schemas/          # Pydantic request/response shapes
 ├── frontend/        # React app
+│   └── src/
+│       ├── api/         # Functions that call the backend
+│       ├── components/  # React components
+│       ├── config/      # App-wide config (e.g. backend URL)
+│       └── constants/   # Shared display text
 ├── ml/              # Data pipeline, training scripts, Kaggle dataset handling
 ├── docs/            # All documentation (this folder)
 └── docs/private/    # Git-ignored, local-only notes

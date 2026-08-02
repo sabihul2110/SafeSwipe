@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { getTransactionHistory } from "../api/backend";
+import { MESSAGES } from "../constants/messages";
 
 function TransactionHistory({ refreshTrigger }) {
   const [transactions, setTransactions] = useState([]);
@@ -13,12 +14,12 @@ function TransactionHistory({ refreshTrigger }) {
   return (
     <div>
       <h2>Transaction History</h2>
-      {transactions.length === 0 && <p>No transactions yet.</p>}
+      {transactions.length === 0 && <p>{MESSAGES.NO_TRANSACTIONS}</p>}
       <ul>
         {transactions.map((t) => (
           <li key={t.id}>
             {t.merchant} — ${t.amount} —{" "}
-            {t.is_fraud ? "FRAUD" : "OK"} ({t.reason})
+            {t.is_fraud ? MESSAGES.FRAUD_LABEL : MESSAGES.OK_LABEL} ({t.reason})
           </li>
         ))}
       </ul>
