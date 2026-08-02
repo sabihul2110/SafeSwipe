@@ -35,7 +35,7 @@ Accepts a transaction and returns a fraud verdict.
 }
 ```
 
-**Note:** The fraud check is currently a placeholder rule (flags amounts over 50000), not a real ML model. This will be replaced once the ML pipeline produces a trained model.
+**Note:** This endpoint uses a placeholder rule (flags amounts over 50000), not the real ML model. Kept as a simple demo. See `/samples` and `/samples/{id}/predict` below for the real model.
 
 Every checked transaction is now saved to the database (SQLite for now), including the amount, merchant, verdict, reason, and timestamp.
 
@@ -54,6 +54,25 @@ Returns all saved transactions, most recent first.
   }
 ]
 ```
+
+### `GET /samples`
+Returns a small set of real transactions (mix of fraud and legitimate) sampled from the training dataset.
+
+### `POST /samples/{sample_id}/predict`
+Runs the real trained model against one sample transaction.
+
+**Response:**
+```json
+{
+  "sample_id": 6,
+  "amount": 0.76,
+  "actual_label": 0,
+  "predicted_fraud": false,
+  "fraud_probability": 0.16
+}
+```
+
+`actual_label` is the real, known outcome from the dataset (0 = legitimate, 1 = fraud) — used to compare against the model's prediction.
 
 ## Conventions
 - All new endpoints go in `backend/routers/`, grouped by feature (e.g. `transactions.py`, `predictions.py`).
