@@ -1,3 +1,9 @@
+<!-- SafeSwipe/frontend/README.md -->
+
+# SafeSwipe Frontend
+
+This is the React frontend for SafeSwipe. It talks to the backend API and displays fraud-check results.
+
 ## Status
 Initialized with Vite. Basic transaction check + history flow working end-to-end against the backend.
 
