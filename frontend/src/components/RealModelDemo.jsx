@@ -9,14 +9,17 @@ import Badge from "./ui/Badge";
 function RealModelDemo() {
   const [samples, setSamples] = useState([]);
   const [results, setResults] = useState({});
+  const [loadingId, setLoadingId] = useState(null);
 
   useEffect(() => {
     getSamples().then(setSamples);
   }, []);
 
   async function handleCheck(sampleId) {
+    setLoadingId(sampleId);
     const result = await predictSample(sampleId);
     setResults((prev) => ({ ...prev, [sampleId]: result }));
+    setLoadingId(null);
   }
 
   return (
@@ -40,7 +43,9 @@ function RealModelDemo() {
               <span>
                 Sample #{s.sample_id} — Amount: ${s.amount}
               </span>
-              <Button onClick={() => handleCheck(s.sample_id)}>Check</Button>
+              <Button onClick={() => handleCheck(s.sample_id)}>
+                {loadingId === s.sample_id ? "Checking..." : "Check"}
+              </Button>
             </div>
             {result && (
               <div style={{ marginTop: "var(--spacing-sm)" }}>

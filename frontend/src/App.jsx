@@ -4,13 +4,14 @@ import { useState } from "react";
 import TransactionForm from "./components/TransactionForm";
 import TransactionHistory from "./components/TransactionHistory";
 import RealModelDemo from "./components/RealModelDemo";
+import Header from "./components/ui/Header";
 
 function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
 
   return (
     <div style={{ maxWidth: "700px", margin: "0 auto", padding: "var(--spacing-lg)" }}>
-      <h1>SafeSwipe</h1>
+      <Header />
 
       <section style={{ marginBottom: "var(--spacing-lg)" }}>
         <h2>Real ML Model Demo</h2>

@@ -10,11 +10,14 @@ function TransactionForm({ onChecked }) {
   const [amount, setAmount] = useState("");
   const [merchant, setMerchant] = useState("");
   const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setLoading(true);
     const data = await checkTransaction(Number(amount), merchant);
     setResult(data);
+    setLoading(false);
     onChecked();
   }
 
@@ -48,7 +51,7 @@ function TransactionForm({ onChecked }) {
           onChange={(e) => setMerchant(e.target.value)}
           required
         />
-        <Button type="submit">Check</Button>
+        <Button type="submit">{loading ? "Checking..." : "Check"}</Button>
       </form>
 
       {result && (
