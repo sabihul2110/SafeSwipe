@@ -21,3 +21,16 @@ export async function getTransactionHistory() {
   const response = await fetch(`${BASE_URL}/transactions`);
   return response.json();
 }
+
+
+export async function getSamples() {
+  const response = await fetch(`${BASE_URL}/samples`);
+  return response.json();
+}
+
+export async function predictSample(sampleId) {
+  const response = await fetch(`${BASE_URL}/samples/${sampleId}/predict`, {
+    method: "POST",
+  });
+  return response.json();
+}
