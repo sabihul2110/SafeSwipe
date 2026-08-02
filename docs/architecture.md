@@ -82,6 +82,10 @@ SafeSwipe/
 Each of these folders (`backend/`, `frontend/`, `ml/`) will get its own README once real work starts inside it, explaining what's there and how to run it.
 
 
+## ML Model Status
+First real model trained: Logistic Regression, class-weighted, on scaled features. Saved as `ml/model/fraud_model.joblib` + `ml/model/scaler.joblib`. Not yet wired into the backend — currently still using the placeholder rule in `services/transaction_service.py`.
+
+
 ## Deployment Strategy
 Not decided yet. To be filled in once the app is functional end-to-end locally. Will cover hosting for backend, frontend, and how the trained model gets deployed alongside the API.
 
