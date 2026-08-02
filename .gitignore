@@ -39,3 +39,6 @@ ml/model/*
 
 # Local SQLite database file
 backend/*.db
+
+# Jupyter autosave checkpoints
+.ipynb_checkpoints/

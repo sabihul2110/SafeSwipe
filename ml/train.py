@@ -1,14 +1,19 @@
 # SafeSwipe/ml/train.py
 
-# Placeholder for the training pipeline.
-# Expected flow once implemented:
-#   1. Load dataset from ml/data/
-#   2. Preprocess / split train-test
-#   3. Train model
-#   4. Save trained model to ml/model/
+import pandas as pd
+import os
+
+DATA_PATH = os.path.join("data", "creditcard.csv")
+
 
 def main():
-    print("SafeSwipe ML pipeline placeholder — not implemented yet.")
+    if not os.path.exists(DATA_PATH):
+        print(f"Dataset not found at {DATA_PATH}. Download it from Kaggle first.")
+        return
+
+    df = pd.read_csv(DATA_PATH)
+    print(f"Loaded dataset with {len(df)} rows and {len(df.columns)} columns.")
+    print(df.head())
 
 
 if __name__ == "__main__":
