@@ -1,4 +1,4 @@
-# SafeSwipe/backend/models.py
+# SafeSwipe/backend/models/transaction.py
 
 from sqlalchemy import Column, Integer, Float, String, Boolean, DateTime
 from sqlalchemy.sql import func

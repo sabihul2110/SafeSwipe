@@ -11,9 +11,19 @@ Basic structure in place: a health-check endpoint, config module, and router pat
 ```text
 backend/
 ├── main.py           # App entry point — wires everything together
-├── core/             # App-wide config/settings
-└── routers/          # API endpoints, grouped by feature
+├── core/              # App-wide config/settings, database connection
+├── routers/           # HTTP layer — receives requests, calls services
+├── services/          # Business logic (e.g. fraud rules)
+├── repositories/       # Database queries only, no business logic
+├── models/             # SQLAlchemy database table definitions
+└── schemas/            # Pydantic request/response shapes
 ```
+
+## Layering convention
+Each layer only talks to the one directly below it:
+`routers` → `services` → `repositories` → `models`
+
+Routers never touch the database directly. Services never know about HTTP. Repositories never make business decisions. This keeps each piece easy to test and replace on its own — e.g. swapping the placeholder fraud rule for a real ML model only touches `services/`.
 
 ## Stack
 - Python 3

@@ -62,8 +62,12 @@ SafeSwipe is split into three independent parts that talk to each other, not one
 ```text
 SafeSwipe/
 ├── backend/        # FastAPI app — API and eventually the ML model serving
-│   ├── core/        # App-wide config/settings
-│   └── routers/     # API endpoints, grouped by feature
+│   ├── core/         # App-wide config/settings, database connection
+│   ├── routers/      # HTTP layer — receives requests, calls services
+│   ├── services/      # Business logic (fraud rules, later: real ML calls)
+│   ├── repositories/   # Database queries only
+│   ├── models/          # SQLAlchemy table definitions
+│   └── schemas/          # Pydantic request/response shapes
 ├── frontend/        # React app
 ├── ml/              # Data pipeline, training scripts, Kaggle dataset handling
 ├── docs/            # All documentation (this folder)

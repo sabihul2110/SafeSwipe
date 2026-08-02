@@ -1,4 +1,4 @@
-# SafeSwipe/backend/schemas.py
+# SafeSwipe/backend/schemas/transaction.py
 
 from pydantic import BaseModel
 
