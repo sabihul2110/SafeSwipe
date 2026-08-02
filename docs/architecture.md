@@ -83,7 +83,11 @@ Each of these folders (`backend/`, `frontend/`, `ml/`) will get its own README o
 
 
 ## ML Model Status
-First real model trained: Logistic Regression, class-weighted, on scaled features. Saved as `ml/model/fraud_model.joblib` + `ml/model/scaler.joblib`. Not yet wired into the backend — currently still using the placeholder rule in `services/transaction_service.py`.
+Logistic Regression, class-weighted, on scaled features. Saved as `ml/model/fraud_model.joblib` + `ml/model/scaler.joblib`.
+
+Wired into the backend via `services/ml_service.py`, exposed through `GET /samples` and `POST /samples/{id}/predict`. These use real transactions (mix of actual fraud/legitimate) sampled from the training dataset — not manual form input — since the dataset's features are anonymized PCA values, not fields a person could realistically type in.
+
+The original `/transactions/check` endpoint still uses a placeholder rule (amount > 50000), kept as a separate, simpler demo — clearly labeled as such in the UI, not confused with the real model.
 
 
 ## Deployment Strategy
