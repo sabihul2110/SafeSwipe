@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { checkTransaction } from "../api/backend";
+import Card from "./ui/Card";
+import Button from "./ui/Button";
+import Badge from "./ui/Badge";
 
 function TransactionForm({ onChecked }) {
   const [amount, setAmount] = useState("");
@@ -15,38 +18,45 @@ function TransactionForm({ onChecked }) {
     onChecked();
   }
 
+  const inputStyle = {
+    display: "block",
+    marginBottom: "var(--spacing-sm)",
+    padding: "8px",
+    borderRadius: "var(--radius-md)",
+    border: "1px solid var(--color-text-muted)",
+    background: "var(--color-bg)",
+    color: "var(--color-text)",
+    width: "100%",
+  };
+
   return (
-    <div>
-      <h2>Check a Transaction</h2>
+    <Card>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Amount: </label>
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Merchant: </label>
-          <input
-            type="text"
-            value={merchant}
-            onChange={(e) => setMerchant(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Check</button>
+        <label>Amount</label>
+        <input
+          style={inputStyle}
+          type="number"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+          required
+        />
+        <label>Merchant</label>
+        <input
+          style={inputStyle}
+          type="text"
+          value={merchant}
+          onChange={(e) => setMerchant(e.target.value)}
+          required
+        />
+        <Button type="submit">Check</Button>
       </form>
 
       {result && (
-        <div>
-          <p>Fraud: {result.is_fraud ? "Yes" : "No"}</p>
-          <p>Reason: {result.reason}</p>
+        <div style={{ marginTop: "var(--spacing-sm)" }}>
+          <Badge isFraud={result.is_fraud} /> — {result.reason}
         </div>
       )}
-    </div>
+    </Card>
   );
 }
 
