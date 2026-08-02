@@ -11,3 +11,14 @@ class TransactionRequest(BaseModel):
 class TransactionResponse(BaseModel):
     is_fraud: bool
     reason: str
+
+
+class TransactionHistoryItem(BaseModel):
+    id: int
+    amount: float
+    merchant: str
+    is_fraud: bool
+    reason: str
+
+    class Config:
+        from_attributes = True

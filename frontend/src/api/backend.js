@@ -15,3 +15,9 @@ export async function checkTransaction(amount, merchant) {
   });
   return response.json();
 }
+
+
+export async function getTransactionHistory() {
+  const response = await fetch(`${BASE_URL}/transactions`);
+  return response.json();
+}

@@ -39,6 +39,22 @@ Accepts a transaction and returns a fraud verdict.
 
 Every checked transaction is now saved to the database (SQLite for now), including the amount, merchant, verdict, reason, and timestamp.
 
+### `GET /transactions`
+Returns all saved transactions, most recent first.
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "amount": 100.0,
+    "merchant": "Some Store",
+    "is_fraud": false,
+    "reason": "No issues detected (placeholder rule, not real ML)"
+  }
+]
+```
+
 ## Conventions
 - All new endpoints go in `backend/routers/`, grouped by feature (e.g. `transactions.py`, `predictions.py`).
 - This document should be updated in the same commit/PR that adds or changes an endpoint.

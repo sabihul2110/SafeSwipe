@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { checkTransaction } from "../api/backend";
 
-function TransactionForm() {
+function TransactionForm({ onChecked }) {
   const [amount, setAmount] = useState("");
   const [merchant, setMerchant] = useState("");
   const [result, setResult] = useState(null);
@@ -12,6 +12,7 @@ function TransactionForm() {
     e.preventDefault();
     const data = await checkTransaction(Number(amount), merchant);
     setResult(data);
+    onChecked();
   }
 
   return (

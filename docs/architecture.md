@@ -85,3 +85,4 @@ Not decided yet. To be filled in once the app is functional end-to-end locally. 
 | _(02/08/2026)_ | Restructured backend with core/ and routers/, added health-check endpoint | Mohammad Sabihul Haque |
 | _(02/08/2026)_ | Added first end-to-end feature: transaction check form (frontend) -> /transactions/check (backend, placeholder logic) | Mohammad Sabihul Haque |
 | _(02/08/2026)_ | Added SQLite persistence — checked transactions are now saved to the database | Mohammad Sabihul Haque |
+| _(02/08/2026)_ | Added transaction history endpoint and frontend view | Mohammad Sabihul Haque |

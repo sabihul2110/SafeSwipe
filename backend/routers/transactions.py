@@ -1,9 +1,11 @@
 # SafeSwipe/backend/routers/transactions.py
 
+from typing import List
+
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from schemas import TransactionRequest, TransactionResponse
+from schemas import TransactionRequest, TransactionResponse, TransactionHistoryItem
 from core.database import get_db
 from models import TransactionRecord
 
@@ -30,3 +32,9 @@ def check_transaction(transaction: TransactionRequest, db: Session = Depends(get
     db.commit()
 
     return TransactionResponse(is_fraud=is_fraud, reason=reason)
+
+
+@router.get("/transactions", response_model=List[TransactionHistoryItem])
+def list_transactions(db: Session = Depends(get_db)):
+    records = db.query(TransactionRecord).order_by(TransactionRecord.created_at.desc()).all()
+    return records
