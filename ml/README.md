@@ -30,4 +30,6 @@ Running `train.py` prints evaluation metrics (precision, recall, F1) and saves t
 - `scaler.joblib` — the feature scaler, required to correctly scale any new transaction the same way training data was scaled
 
 ## Current model
-Logistic Regression with `class_weight="balanced"`, on scaled features. Baseline result: ~92% recall (catches most fraud), ~6% precision (many false alarms) — a reasonable first model, not a final one. See `docs/private/changelog.md` for exact run history.
+Random Forest (`class_weight="balanced"`, 100 trees), trained on unscaled features (tree-based models don't require scaling). Chosen after comparing against Logistic Regression — see `docs/model_card.md` for full metrics. Result: ~79% recall, ~92% precision — far fewer false alarms than the Logistic Regression baseline, at a modest recall cost.
+
+`compare_models.py` holds the original comparison between both models, kept for reference.

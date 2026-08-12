@@ -83,7 +83,7 @@ Each of these folders (`backend/`, `frontend/`, `ml/`) will get its own README o
 
 
 ## ML Model Status
-Logistic Regression, class-weighted, on scaled features. Saved as `ml/model/fraud_model.joblib` + `ml/model/scaler.joblib`.
+Random Forest, class-weighted, trained on unscaled features. Saved as `ml/model/fraud_model.joblib`. Chosen after comparing against a Logistic Regression baseline — see `docs/model_card.md`.
 
 Wired into the backend via `services/ml_service.py`, exposed through `GET /samples` and `POST /samples/{id}/predict`. These use real transactions (mix of actual fraud/legitimate) sampled from the training dataset — not manual form input — since the dataset's features are anonymized PCA values, not fields a person could realistically type in.
 

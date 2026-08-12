@@ -4,14 +4,12 @@ import os
 
 import joblib
 import pandas as pd
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
 
 DATA_PATH = os.path.join("data", "creditcard.csv")
 MODEL_PATH = os.path.join("model", "fraud_model.joblib")
-SCALER_PATH = os.path.join("model", "scaler.joblib")
 
 
 def load_data():
@@ -28,32 +26,29 @@ def train_and_evaluate(df):
         X, y, test_size=0.2, random_state=42, stratify=y
     )
 
-    scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train)
-    X_test_scaled = scaler.transform(X_test)
+    # Random Forest doesn't need feature scaling — it splits on raw
+    # thresholds per feature, unlike distance-based models like Logistic
+    # Regression, so we train directly on the unscaled data.
+    model = RandomForestClassifier(class_weight="balanced", n_estimators=100, random_state=42)
+    model.fit(X_train, y_train)
 
-    model = LogisticRegression(class_weight="balanced", max_iter=1000)
-    model.fit(X_train_scaled, y_train)
-
-    y_pred = model.predict(X_test_scaled)
+    y_pred = model.predict(X_test)
     print(confusion_matrix(y_test, y_pred))
     print(classification_report(y_test, y_pred))
 
-    return model, scaler
+    return model
 
 
-def save_artifacts(model, scaler):
+def save_artifacts(model):
     os.makedirs("model", exist_ok=True)
     joblib.dump(model, MODEL_PATH)
-    joblib.dump(scaler, SCALER_PATH)
     print(f"Saved model to {MODEL_PATH}")
-    print(f"Saved scaler to {SCALER_PATH}")
 
 
 def main():
     df = load_data()
-    model, scaler = train_and_evaluate(df)
-    save_artifacts(model, scaler)
+    model = train_and_evaluate(df)
+    save_artifacts(model)
 
 
 if __name__ == "__main__":
