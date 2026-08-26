@@ -1,9 +1,9 @@
 # SafeSwipe/backend/requirements.txt
-
-
 fastapi
 uvicorn
 sqlalchemy
 scikit-learn
 joblib
 pandas
+pytest
+httpx

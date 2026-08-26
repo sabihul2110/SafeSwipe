@@ -30,7 +30,12 @@ Routers never touch the database directly. Services never know about HTTP. Repos
 - FastAPI
 - Uvicorn (dev server)
 
-## Setup (placeholder — will be filled in once real code exists)
+## Testing
+```bash
+pytest
+```
+
+## Setup
 ```bash
 cd backend
 python -m venv venv
