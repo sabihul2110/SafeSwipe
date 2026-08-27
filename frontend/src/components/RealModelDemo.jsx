@@ -10,15 +10,23 @@ function RealModelDemo() {
   const [samples, setSamples] = useState([]);
   const [results, setResults] = useState({});
   const [loadingId, setLoadingId] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getSamples().then(setSamples);
+    getSamples()
+      .then(setSamples)
+      .catch(() => setError("Couldn't load samples. Is the backend running?"));
   }, []);
 
   async function handleCheck(sampleId) {
     setLoadingId(sampleId);
-    const result = await predictSample(sampleId);
-    setResults((prev) => ({ ...prev, [sampleId]: result }));
+    setError(null);
+    try {
+      const result = await predictSample(sampleId);
+      setResults((prev) => ({ ...prev, [sampleId]: result }));
+    } catch {
+      setError("Prediction failed. Check that the backend is running.");
+    }
     setLoadingId(null);
   }
 
@@ -29,6 +37,9 @@ function RealModelDemo() {
         (not made up). Click one to see the model's live prediction compared
         to the actual outcome.
       </p>
+
+      {error && <p style={{ color: "var(--color-danger)" }}>{error}</p>}
+      
       {samples.map((s) => {
         const result = results[s.sample_id];
         return (

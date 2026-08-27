@@ -2,9 +2,16 @@
 
 import { BASE_URL } from "../config/api";
 
+async function handleResponse(response) {
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status}`);
+  }
+  return response.json();
+}
+
 export async function checkBackendHealth() {
   const response = await fetch(`${BASE_URL}/health`);
-  return response.json();
+  return handleResponse(response);
 }
 
 export async function checkTransaction(amount, merchant) {
@@ -13,24 +20,22 @@ export async function checkTransaction(amount, merchant) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ amount, merchant }),
   });
-  return response.json();
+  return handleResponse(response);
 }
-
 
 export async function getTransactionHistory() {
   const response = await fetch(`${BASE_URL}/transactions`);
-  return response.json();
+  return handleResponse(response);
 }
-
 
 export async function getSamples() {
   const response = await fetch(`${BASE_URL}/samples`);
-  return response.json();
+  return handleResponse(response);
 }
 
 export async function predictSample(sampleId) {
   const response = await fetch(`${BASE_URL}/samples/${sampleId}/predict`, {
     method: "POST",
   });
-  return response.json();
+  return handleResponse(response);
 }

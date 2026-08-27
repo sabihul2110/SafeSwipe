@@ -15,6 +15,10 @@ function App() {
 
       <section style={{ marginBottom: "var(--spacing-lg)" }}>
         <h2>Real ML Model Demo</h2>
+        <p style={{ color: "var(--color-text-muted)" }}>
+          This is the actual trained model (Random Forest), tested against
+          real transactions from the dataset.
+        </p>
         <RealModelDemo />
       </section>
 
