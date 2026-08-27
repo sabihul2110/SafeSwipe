@@ -14,6 +14,7 @@ All architecture decisions, setup guides, and specifications live in the [`docs/
 ## Getting Started
 
 See [`docs/setup.md`](./docs/setup.md) for full setup instructions for the backend, frontend, and ML pipeline.
+For running a live demo, see [`docs/demo_guide.md`](./docs/demo_guide.md).
 
 ## License
 
