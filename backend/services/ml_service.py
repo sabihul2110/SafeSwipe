@@ -18,8 +18,14 @@ def _load_model():
     return _model
 
 
+# Tuned via ml/tune_threshold.py — 0.4 gives better recall (catches more
+# fraud) than the default 0.5, at only a small precision cost. In fraud
+# detection, missing real fraud is generally costlier than a false alarm.
+FRAUD_THRESHOLD = 0.4
+
+
 def predict_from_features(features_df):
     model = _load_model()
-    prediction = model.predict(features_df)[0]
     probability = model.predict_proba(features_df)[0][1]
+    prediction = probability >= FRAUD_THRESHOLD
     return bool(prediction), float(probability)
