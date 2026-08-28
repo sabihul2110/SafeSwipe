@@ -5,7 +5,7 @@ import os
 import joblib
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix, matthews_corrcoef
 from sklearn.model_selection import train_test_split
 
 DATA_PATH = os.path.join("data", "creditcard.csv")
@@ -35,6 +35,12 @@ def train_and_evaluate(df):
     y_pred = model.predict(X_test)
     print(confusion_matrix(y_test, y_pred))
     print(classification_report(y_test, y_pred))
+
+    # MCC is a more reliable single-number summary than accuracy on
+    # imbalanced data — it accounts for all four confusion matrix cells,
+    # not just the positive class.
+    mcc = matthews_corrcoef(y_test, y_pred)
+    print(f"Matthews Correlation Coefficient: {mcc:.4f}")
 
     return model
 

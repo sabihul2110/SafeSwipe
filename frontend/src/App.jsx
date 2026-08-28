@@ -4,6 +4,7 @@ import { useState } from "react";
 import TransactionForm from "./components/TransactionForm";
 import TransactionHistory from "./components/TransactionHistory";
 import RealModelDemo from "./components/RealModelDemo";
+import ModelInfo from "./components/ModelInfo";
 import Header from "./components/ui/Header";
 
 function App() {
@@ -20,6 +21,11 @@ function App() {
           real transactions from the dataset.
         </p>
         <RealModelDemo />
+      </section>
+
+      <section style={{ marginBottom: "var(--spacing-lg)" }}>
+        <h2>Model Health</h2>
+        <ModelInfo />
       </section>
 
       <hr style={{ borderColor: "var(--color-surface)" }} />

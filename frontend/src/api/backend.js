@@ -39,3 +39,9 @@ export async function predictSample(sampleId) {
   });
   return handleResponse(response);
 }
+
+
+export async function getModelInfo() {
+  const response = await fetch(`${BASE_URL}/model-info`);
+  return handleResponse(response);
+}

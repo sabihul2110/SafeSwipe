@@ -74,6 +74,10 @@ Runs the real trained model against one sample transaction.
 
 `actual_label` is the real, known outcome from the dataset (0 = legitimate, 1 = fraud) — used to compare against the model's prediction.
 
+
+### `GET /model-info`
+Returns the current model's name, chosen threshold, and headline metrics (precision, recall, F1), plus a short explanation of why that threshold was chosen. Used to display "Model Health" info in the UI.
+
 ## Conventions
 - All new endpoints go in `backend/routers/`, grouped by feature (e.g. `transactions.py`, `predictions.py`).
 - This document should be updated in the same commit/PR that adds or changes an endpoint.

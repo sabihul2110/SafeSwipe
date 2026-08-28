@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from core.config import APP_NAME, APP_VERSION
 from core.database import engine
-from routers import health, transactions, samples
+from routers import health, transactions, samples, model_info
 import models
 
 app = FastAPI(title=APP_NAME, version=APP_VERSION)
@@ -24,6 +24,7 @@ app.add_middleware(
 app.include_router(health.router)
 app.include_router(transactions.router)
 app.include_router(samples.router)
+app.include_router(model_info.router)
 
 
 @app.get("/")
