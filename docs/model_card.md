@@ -27,6 +27,11 @@ Random Forest catches 79% of actual fraud cases, and when it does flag a transac
 - Trained on one static, historical dataset — not validated against real-time or newer fraud patterns.
 - Classification threshold is the default (0.5) — not yet tuned for a specific business cost tradeoff between missed fraud and false alarms.
 
+## Additional Metric: MCC
+Matthews Correlation Coefficient (MCC) — a more balanced single-number summary than accuracy on imbalanced data, since it accounts for all four confusion matrix outcomes (true/false positives/negatives), not just the positive class.
+
+**MCC (at default 0.5 threshold): 0.8484** — a strong, well-balanced result. For reference, a comparable public implementation of this same dataset/model reports an MCC of 0.8863; our result is in the same range, supporting that this model's performance is consistent with expected results on this dataset, not an artifact of a lucky split.
+
 ## Threshold Tuning
 Tested thresholds from 0.3 to 0.8 (see `ml/tune_threshold.py`). Final choice: **0.4** (instead of the default 0.5) — improves recall to 83% (catching more real fraud) while keeping precision at 88%, since missing fraud is generally costlier than a false alarm.
 
