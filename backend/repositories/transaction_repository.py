@@ -15,3 +15,9 @@ def create_transaction(db: Session, amount: float, merchant: str, is_fraud: bool
 
 def get_all_transactions(db: Session):
     return db.query(TransactionRecord).order_by(TransactionRecord.created_at.desc()).all()
+
+
+
+def delete_all_transactions(db: Session):
+    db.query(TransactionRecord).delete()
+    db.commit()

@@ -18,7 +18,10 @@ function Button({ children, onClick, variant = "primary", type = "button" }) {
         padding: "8px 16px",
         cursor: "pointer",
         fontFamily: "var(--font-family)",
+        transition: "opacity 0.15s ease",
       }}
+      onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+      onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
     >
       {children}
     </button>

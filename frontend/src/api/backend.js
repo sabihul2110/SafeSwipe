@@ -28,6 +28,14 @@ export async function getTransactionHistory() {
   return handleResponse(response);
 }
 
+
+export async function clearTransactionHistory() {
+  const response = await fetch(`${BASE_URL}/transactions`, {
+    method: "DELETE",
+  });
+  return handleResponse(response);
+}
+
 export async function getSamples() {
   const response = await fetch(`${BASE_URL}/samples`);
   return handleResponse(response);

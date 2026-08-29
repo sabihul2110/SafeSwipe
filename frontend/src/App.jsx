@@ -6,6 +6,7 @@ import TransactionHistory from "./components/TransactionHistory";
 import RealModelDemo from "./components/RealModelDemo";
 import ModelInfo from "./components/ModelInfo";
 import Header from "./components/ui/Header";
+import Footer from "./components/ui/Footer";
 
 function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
@@ -39,6 +40,8 @@ function App() {
         <TransactionForm onChecked={() => setRefreshTrigger((n) => n + 1)} />
         <TransactionHistory refreshTrigger={refreshTrigger} />
       </section>
+
+      <Footer />
     </div>
   );
 }

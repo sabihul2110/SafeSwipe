@@ -2,7 +2,7 @@
 
 from sqlalchemy.orm import Session
 
-from repositories.transaction_repository import create_transaction, get_all_transactions
+from repositories.transaction_repository import create_transaction, get_all_transactions, delete_all_transactions
 
 
 def evaluate_and_save_transaction(db: Session, amount: float, merchant: str):
@@ -20,3 +20,7 @@ def evaluate_and_save_transaction(db: Session, amount: float, merchant: str):
 
 def list_transaction_history(db: Session):
     return get_all_transactions(db)
+
+
+def clear_transaction_history(db: Session):
+    delete_all_transactions(db)

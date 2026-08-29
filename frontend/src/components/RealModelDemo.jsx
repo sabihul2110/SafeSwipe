@@ -60,8 +60,8 @@ function RealModelDemo() {
             </div>
             {result && (
               <div style={{ marginTop: "var(--spacing-sm)" }}>
-                Model says: <Badge isFraud={result.predicted_fraud} /> (
-                {(result.fraud_probability * 100).toFixed(1)}% confidence)
+                Model says: <Badge isFraud={result.predicted_fraud} /> (fraud
+                probability: {(result.fraud_probability * 100).toFixed(1)}%)
                 {" — "}
                 Actual: <Badge isFraud={result.actual_label === 1} />
               </div>
